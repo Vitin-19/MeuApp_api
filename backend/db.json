@@ -1,0 +1,70 @@
+{
+    "peoples": [
+        {
+            "id": 1,
+            "firstName": "Ronaldo",
+            "lastName": "Nazário",
+            "email": "ronaldo@gmail.com"
+        },
+        {
+            "id": 2,
+            "firstName": "Cristiano",
+            "lastName": "Ronaldo",
+            "email": "cristiano@gmail.com"
+        },
+        {
+            "id": 3,
+            "firstName": "Lionel",
+            "lastName": "Messi",
+            "email": "lionel@gmail.com"
+        },
+        {
+            "id": 4,
+            "firstName": "Neymar",
+            "lastName": "Jr",
+            "email": "neymar@gmail.com"
+        },
+        {
+            "id": 5,
+            "firstName": "Kylian",
+            "lastName": "Mbappé",
+            "email": "kylian@gmail.com"
+        },
+        {
+            "id": 6,
+            "firstName": "Zinedine",
+            "lastName": "Zidane",
+            "email": "zinedine@gmail.com"
+        },
+        {
+            "id": 7,
+            "firstName": "Andrés",
+            "lastName": "Iniesta",
+            "email": "andres@gmail.com"
+        },
+        {
+            "id": 8,
+            "firstName": "Xavi",
+            "lastName": "Hernández",
+            "email": "xavi@gmail.com"
+        },
+        {
+            "id": 9,
+            "firstName": "Iker",
+            "lastName": "Casillas",
+            "email": "iker@gmail.com"
+        },
+        {
+            "id": 10,
+            "firstName": "David",
+            "lastName": "Beckham",
+            "email": "david@gmail.com"
+        },
+        {
+            "id": 11,
+            "firstName": "Thierry",
+            "lastName": "Henry",
+            "email": "thierry@gmail.com"
+        }
+    ]
+}
