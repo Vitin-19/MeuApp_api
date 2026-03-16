@@ -5,7 +5,7 @@ const verifyPerson = (person) => {
     if(!(person instanceof Person)) throw new Error("Param must be type of Person");
 }
 
-async function createPerson(person) {
+export async function createPerson(person) {
     verifyPerson(person);
 
     try {
@@ -26,7 +26,7 @@ async function createPerson(person) {
     }
 }
 
-async function editPerson(person) {
+export async function editPerson(person) {
     verifyPerson(person);
 
     try{
@@ -46,7 +46,7 @@ async function editPerson(person) {
     }
 }
 
-async function deletePerson(id) {
+export async function deletePerson(id) {
     try {
         await server.delete(`/peoples/${id}`);
         console.log("Person has been delected successfully")

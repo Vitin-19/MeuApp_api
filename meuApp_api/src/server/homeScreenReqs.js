@@ -1,7 +1,6 @@
 import server from "./server";
-import Person from "../model/Person";
 
-async function getPeople() {
+export async function getPeople() {
     try {
         const people = await server.get("/peoples");
         console.log("People has been gotten successfully\n", people);
