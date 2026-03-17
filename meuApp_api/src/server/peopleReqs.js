@@ -1,4 +1,4 @@
-import Person from "../model/Person";
+import People from "../model/Person";
 import server from "./server";
 
 const verifyPerson = (person) => {
@@ -56,5 +56,24 @@ export async function deletePerson(id) {
         console.error(error);
 
         return "Error on deleting person";
+    }
+}
+
+export async function getPeople() {
+    try {
+        const people = await server.get("/peoples");
+        console.log("People has been gotten successfully\n", people);
+
+        return {
+            message: "People has been gotten successfully",
+            response: people
+        };
+    } catch (error) {
+        console.error(error);
+
+        return {
+            message: "Error on getting people",
+            response: error
+        };
     }
 }
