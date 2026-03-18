@@ -11,15 +11,17 @@
     "host": "ssh -p 443 -R0:localhost:3000 qr@a.pinggy.io"
   },
   "dependencies": {
+    "@expo/vector-icons": "^15.1.1",
+    "@react-native-async-storage/async-storage": "^3.0.1",
     "@react-navigation/native": "^7.1.33",
     "@react-navigation/stack": "^7.8.5",
     "axios": "^1.13.6",
     "dotenv": "^17.3.1",
     "expo": "~55.0.6",
     "expo-status-bar": "~55.0.4",
+    "json-server": "^1.0.0-beta.13",
     "react": "19.2.0",
-    "react-native": "0.83.2",
-    "json-server": "^1.0.0-beta.13"
+    "react-native": "0.83.2"
   },
   "devDependencies": {
     "@expo/ngrok": "^4.1.3"

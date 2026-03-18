@@ -1,4 +1,4 @@
-import People from "../model/Person";
+import Person from "../model/Person";
 import server from "./server";
 
 const verifyPerson = (person) => {
@@ -6,10 +6,11 @@ const verifyPerson = (person) => {
 }
 
 export async function createPerson(person) {
-    verifyPerson(person);
 
     try {
-        const response = await server.post("/peoples", person);
+        const newPerson = new Person(null, person.firstName, person.lastName, person.email, person.phone);
+
+        const response = await server.post("/peoples", newPerson);
         console.log("Person has been created successfully");
 
         return {
@@ -19,15 +20,12 @@ export async function createPerson(person) {
     } catch (error) {
         console.error(error)
 
-        return {
-            message: "Error on creating person",
-            response: error
-        };
+        throw new Error(error);
     }
 }
 
 export async function editPerson(person) {
-    verifyPerson(person);
+    const person = new Person(person.id, person.firstName, person.lastName, person.email, person.phone);
 
     try{
         const response = await server.put(`/peoples/${person.id}`, person);
@@ -39,10 +37,8 @@ export async function editPerson(person) {
         };
     }catch(error){
         console.error(error);
-        return {
-            message: "Error on editing person",
-            response: error
-        };
+
+        throw new Error(error);
     }
 }
 
@@ -55,7 +51,7 @@ export async function deletePerson(id) {
     } catch (error) {
         console.error(error);
 
-        return "Error on deleting person";
+        throw new Error(error);
     }
 }
 
@@ -71,9 +67,6 @@ export async function getPeople() {
     } catch (error) {
         console.error(error);
 
-        return {
-            message: "Error on getting people",
-            response: error
-        };
+        throw new Error(error);
     }
 }
