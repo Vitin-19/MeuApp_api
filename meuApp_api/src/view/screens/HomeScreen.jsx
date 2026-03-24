@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import { FlatList, TextInput, TouchableOpacity, View } from 'react-native';
+import { Button, FlatList, TextInput, TouchableOpacity, View, Text } from 'react-native';
 import { getPeople } from '../../server/peopleReqs';
-import AsyncStorage from "@react-native-async-storage/async-storage"
-import PersonCard from '../components/personCard';
-import { FontAwasome, MaterialIcons } from "@expo/vector-icons"
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import PersonCard from '../components/PersonCard';
+import { FontAwesome, MaterialIcons } from "@expo/vector-icons"
+import style from '../styles/style';
 
 const HomeScreen = ({navigation}) => {
     const [people,setPeople] = useState([]);
@@ -13,58 +14,57 @@ const HomeScreen = ({navigation}) => {
 
     // load the people from database
     async function loadPeople() {
-        try {
-            const response = await getPeople();
+        const response = await getPeople();
+        console.log(response.message);
 
-            if(response.response.lenght){
-                setPeople(response.response)
-            }else{
-                // if not people on database, try getting from async storage
+            // if(response.response.length){
+            //     setPeople(response.response)
+            // }else{
+            //     // if not people on database, try getting from async storage
 
-                const people = await AsyncStorage.getItem("people");
+            //     const people = JSON.stringify(await AsyncStorage.getItem("people"))
 
-                if(!people) return console.warn("No people was found from the last use");
+            //     if(!people) return console.warn("No people was found from the last use");
 
-                setPeople(people);
-            }
+            //     setPeople(people);
+            // }
 
-        } catch (error) {
-            console.error("Error: ", error);
-        }
+        setPeople(response.response);
+
     }
 
-    function search() {
-        try {
-            if(searchTerm.length === 0){
-                setFilteredPeople(people)
-            }else{
-                const filtered = people.filter((person) => {
-                    person.firstName.toLowerCase().includes(searchTerm.toLowerCase())
-                });
-                setFilteredPeople(filtered);
-            }
-        } catch (error) {
-            console.error("Error on filtering characters\n\n", error);
-        }
-    }
+    // function search() {
+    //     try {
+    //         if(searchTerm.length === 0){
+    //             setFilteredPeople(people)
+    //         }else{
+    //             const filtered = people.filter((person) => {
+    //                 return person.firstName.toLowerCase().includes(searchTerm.toLowerCase())
+    //             });
+    //             setFilteredPeople(filtered);
+    //         }
+    //     } catch (error) {
+    //         console.error("Error on filtering characters\n\n", error);
+    //     }
+    // }
 
     useEffect(() => loadPeople(), []);
-    useEffect(() => search(), [searchTerm, people])
+    // useEffect(() => search(), [searchTerm, people])
 
 
     return(
-        <View>
+        <View style={style.container}>
 
             {/* Header */}
-            <View>
+            {/* <View>
                 <Text>People</Text>
-                <TouchableOpacity onPress={setIsSearching(!isSearching)}>
+                <TouchableOpacity onPress={() => setIsSearching(!isSearching)}>
                     <MaterialIcons name='search' size={32} color="black"/>
                 </TouchableOpacity>
             </View>
 
             {/* search bar */}
-            {isSearching && (
+            {/* {isSearching && (
                 <View>
                     <TextInput
                         placeholder='Search'
@@ -72,10 +72,15 @@ const HomeScreen = ({navigation}) => {
                         onChangeText={setSearchTerm}
                     />
                 </View>
-            )}
+            )} */}
+
+            <Button
+                title='Add Person'
+                onPress={() => navigation.navigate("AddEditScreen")}
+            />
 
             <FlatList
-                data={filteredPeople}
+                data={people}
                 keyExtractor={(item) => item.id.toString()}
 
                 renderItem={({item}) => (

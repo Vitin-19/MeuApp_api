@@ -25,7 +25,6 @@ export async function createPerson(person) {
 }
 
 export async function editPerson(person) {
-    const person = new Person(person.id, person.firstName, person.lastName, person.email, person.phone);
 
     try{
         const response = await server.put(`/peoples/${person.id}`, person);
@@ -57,7 +56,7 @@ export async function deletePerson(id) {
 
 export async function getPeople() {
     try {
-        const people = await server.get("/peoples");
+        const people = await server.get("/people");
         console.log("People has been gotten successfully\n", people);
 
         return {
@@ -66,7 +65,10 @@ export async function getPeople() {
         };
     } catch (error) {
         console.error(error);
-
+        return {
+            message: "Error",
+            response: null
+        }
         throw new Error(error);
     }
 }
