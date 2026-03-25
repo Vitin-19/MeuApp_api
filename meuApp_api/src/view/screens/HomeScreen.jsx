@@ -29,7 +29,7 @@ const HomeScreen = ({navigation}) => {
             //     setPeople(people);
             // }
 
-        setPeople(response.response);
+        setPeople(response.data.data);
 
     }
 
@@ -48,7 +48,9 @@ const HomeScreen = ({navigation}) => {
     //     }
     // }
 
-    useEffect(() => loadPeople(), []);
+    useEffect(() => {
+        loadPeople();
+    }, []);
     // useEffect(() => search(), [searchTerm, people])
 
 
@@ -76,10 +78,11 @@ const HomeScreen = ({navigation}) => {
 
             <Button
                 title='Add Person'
-                onPress={() => navigation.navigate("AddEditScreen")}
+                onPress={() => navigation.navigate("AddEditScreen", {action: "create"})}
             />
 
             <FlatList
+                style={style.list}
                 data={people}
                 keyExtractor={(item) => item.id.toString()}
 

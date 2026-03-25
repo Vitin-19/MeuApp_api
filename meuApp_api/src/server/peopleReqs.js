@@ -10,12 +10,12 @@ export async function createPerson(person) {
     try {
         const newPerson = new Person(null, person.firstName, person.lastName, person.email, person.phone);
 
-        const response = await server.post("/peoples", newPerson);
+        const response = await server.post("", newPerson);
         console.log("Person has been created successfully");
 
         return {
             message: "Person has been created successfully",
-            response: response
+            data: response
         };
     } catch (error) {
         console.error(error)
@@ -27,12 +27,12 @@ export async function createPerson(person) {
 export async function editPerson(person) {
 
     try{
-        const response = await server.put(`/peoples/${person.id}`, person);
+        const response = await server.put(`/${person.id}`, person);
         console.log("Person has been edited successfully")
 
         return {
             message: "Person has been edited successfully",
-            response: response
+            data: response
         };
     }catch(error){
         console.error(error);
@@ -43,7 +43,7 @@ export async function editPerson(person) {
 
 export async function deletePerson(id) {
     try {
-        await server.delete(`/peoples/${id}`);
+        await server.delete(`/${id}`);
         console.log("Person has been delected successfully")
 
         return "Person has been delected successfully";
@@ -56,18 +56,18 @@ export async function deletePerson(id) {
 
 export async function getPeople() {
     try {
-        const people = await server.get("/people");
+        const people = await server.get();
         console.log("People has been gotten successfully\n", people);
 
         return {
             message: "People has been gotten successfully",
-            response: people
+            data: people
         };
     } catch (error) {
         console.error(error);
         return {
             message: "Error",
-            response: null
+            data: null
         }
         throw new Error(error);
     }

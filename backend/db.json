@@ -1,81 +1,96 @@
 {
-    "people": [
-        {
-            "id": 1,
-            "firstName": "Alice",
-            "lastName": "Johnson",
-            "email": "alice.johnson@gmail.com",
-            "phone": "11987654321"
-        },
-        {
-            "id": 2,
-            "firstName": "Bob",
-            "lastName": "Smith",
-            "email": "bob.smith@yahoo.com",
-            "phone": "21976543210"
-        },
-        {
-            "id": 3,
-            "firstName": "Charlie",
-            "lastName": "Brown",
-            "email": "charlie.brown@hotmail.com",
-            "phone": "31965432109"
-        },
-        {
-            "id": 4,
-            "firstName": "Diana",
-            "lastName": "Evans",
-            "email": "diana.evans@outlook.com",
-            "phone": "41954321098"
-        },
-        {
-            "id": 5,
-            "firstName": "Ethan",
-            "lastName": "Taylor",
-            "email": "ethan.taylor@gmail.com",
-            "phone": "51943210987"
-        },
-        {
-            "id": 6,
-            "firstName": "Fiona",
-            "lastName": "Williams",
-            "email": "fiona.williams@yahoo.com",
-            "phone": "61932109876"
-        },
-        {
-            "id": 7,
-            "firstName": "George",
-            "lastName": "Miller",
-            "email": "george.miller@hotmail.com",
-            "phone": "71921098765"
-        },
-        {
-            "id": 8,
-            "firstName": "Hannah",
-            "lastName": "Davis",
-            "email": "hannah.davis@outlook.com",
-            "phone": "81910987654"
-        },
-        {
-            "id": 9,
-            "firstName": "Ian",
-            "lastName": "Wilson",
-            "email": "ian.wilson@gmail.com",
-            "phone": "91909876543"
-        },
-        {
-            "id": 10,
-            "firstName": "Julia",
-            "lastName": "Moore",
-            "email": "julia.moore@yahoo.com",
-            "phone": "11998765432"
-        },
-        {
-            "id": 11,
-            "firstName": "Kevin",
-            "lastName": "Anderson",
-            "email": "kevin.anderson@hotmail.com",
-            "phone": "21987654321"
-        }
-    ]
+  "people": [
+    {
+      "id": "1",
+      "firstName": "Alice",
+      "lastName": "Johnson",
+      "email": "alice.johnson@gmail.com",
+      "phone": "11987654321"
+    },
+    {
+      "id": "2",
+      "firstName": "Bruno",
+      "lastName": "Souza",
+      "email": "bruno.silva@outlook.com",
+      "phone": "21976543210"
+    },
+    {
+      "id": "3",
+      "firstName": "Carla",
+      "lastName": "Souza",
+      "email": "carla.souza@yahoo.com",
+      "phone": "31965432109"
+    },
+    {
+      "id": "4",
+      "firstName": "Diana",
+      "lastName": "Evans",
+      "email": "diana.evans@outlook.com",
+      "phone": "41954321098"
+    },
+    {
+      "id": "5",
+      "firstName": "Ethan",
+      "lastName": "Taylor",
+      "email": "ethan.taylor@gmail.com",
+      "phone": "51943210987"
+    },
+    {
+      "id": "6",
+      "firstName": "Fiona",
+      "lastName": "Williams",
+      "email": "fiona.williams@yahoo.com",
+      "phone": "61932109876"
+    },
+    {
+      "id": "7",
+      "firstName": "George",
+      "lastName": "Miller",
+      "email": "george.miller@hotmail.com",
+      "phone": "71921098765"
+    },
+    {
+      "id": "8",
+      "firstName": "Hannah",
+      "lastName": "Davis",
+      "email": "hannah.davis@outlook.com",
+      "phone": "81910987654"
+    },
+    {
+      "id": "9",
+      "firstName": "Ian",
+      "lastName": "Wilson",
+      "email": "ian.wilson@gmail.com",
+      "phone": "91909876543"
+    },
+    {
+      "id": "10",
+      "firstName": "Julia",
+      "lastName": "Moore",
+      "email": "julia.moore@yahoo.com",
+      "phone": "11998765432"
+    },
+    {
+      "id": "11",
+      "firstName": "Kevin",
+      "lastName": "Anderson",
+      "email": "kevin.anderson@hotmail.com",
+      "phone": "21987654321"
+    },
+    {
+      "id": "12",
+      "firstName": "João",
+      "lastName": "Gomes",
+      "email": "joao@gmail.com",
+      "phone": "19999999999"
+    },
+    {
+      "id": null,
+      "firstName": "Vitor ",
+      "lastName": "Paiva",
+      "email": "Email@email.com",
+      "phone": "19999011906"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

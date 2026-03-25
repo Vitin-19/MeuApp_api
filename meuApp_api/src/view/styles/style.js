@@ -4,7 +4,7 @@ export default StyleSheet.create({
     container:{
         flex:1,
         padding:20,
-        backgroundColor:"#f5f5f5"
+        backgroundColor:"#f5f5f5",
     },
 
     title:{
@@ -30,9 +30,18 @@ export default StyleSheet.create({
         fontSize:10
     },
 
+    list:{
+        paddingTop:10
+    },
+
     button:{
         padding:10,
         backgroundColor:"#4caf50",
         borderRadius:5
+    },
+
+    field:{
+        borderWidth: 1,
+        borderColor:"#0567e7",
     }
 });
