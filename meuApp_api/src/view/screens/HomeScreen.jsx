@@ -3,90 +3,109 @@ import { Button, FlatList, TextInput, TouchableOpacity, View, Text } from 'react
 import { getPeople } from '../../server/peopleReqs';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import PersonCard from '../components/PersonCard';
-import { FontAwesome, MaterialIcons } from "@expo/vector-icons"
+import { MaterialIcons } from "@expo/vector-icons"
 import style from '../styles/style';
 
-const HomeScreen = ({navigation}) => {
-    const [people,setPeople] = useState([]);
-    const [filteredPeople,setFilteredPeople] = useState(people);
+const HomeScreen = ({ navigation }) => {
+    const [people, setPeople] = useState([]);
+    const [filteredPeople, setFilteredPeople] = useState(people);
     const [searchTerm, setSearchTerm] = useState("");
     const [isSearching, setIsSearching] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState("");
 
     // load the people from database
     async function loadPeople() {
+        setIsLoading(true);
         const response = await getPeople();
-        console.log(response.message);
 
-            // if(response.response.length){
-            //     setPeople(response.response)
-            // }else{
-            //     // if not people on database, try getting from async storage
+        if(response.message === "Error"){
+            setError(response.data);
+            setIsLoading(false);
+            return;
+        }
 
-            //     const people = JSON.stringify(await AsyncStorage.getItem("people"))
+        console.log(response.data);
 
-            //     if(!people) return console.warn("No people was found from the last use");
+        if (response.data.length > 0) {
+            setPeople(response.data);
+            await AsyncStorage.setItem("people", JSON.stringify(response.data))
+        } else {
+            // if not people on database, try getting from async storage
 
-            //     setPeople(people);
-            // }
+            const people = JSON.parse(await AsyncStorage.getItem("people"))
 
-        setPeople(response.data.data);
+            if (!people) return console.warn("No people was found from the last use");
 
+            setPeople(people);
+        }
+        setIsLoading(false);
     }
 
-    // function search() {
-    //     try {
-    //         if(searchTerm.length === 0){
-    //             setFilteredPeople(people)
-    //         }else{
-    //             const filtered = people.filter((person) => {
-    //                 return person.firstName.toLowerCase().includes(searchTerm.toLowerCase())
-    //             });
-    //             setFilteredPeople(filtered);
-    //         }
-    //     } catch (error) {
-    //         console.error("Error on filtering characters\n\n", error);
-    //     }
-    // }
+    function search() {
+        try {
+            if (searchTerm.length === 0) {
+                setFilteredPeople(people)
+            } else {
+                const filtered = people.filter((person) => {
+                    return person.firstName.toLowerCase().includes(searchTerm.toLowerCase())
+                });
+                setFilteredPeople(filtered);
+            }
+        } catch (error) {
+            console.error("Error on filtering characters\n\n", error);
+        }
+    }
+
+    function refreshList(){
+        loadPeople();
+    }
 
     useEffect(() => {
         loadPeople();
     }, []);
-    // useEffect(() => search(), [searchTerm, people])
+    useEffect(() => { search() }, [searchTerm, people])
 
 
-    return(
+    return (
         <View style={style.container}>
 
             {/* Header */}
-            {/* <View>
-                <Text>People</Text>
+            <View style={style.header}>
+                <Text style={style.title}>People</Text>
                 <TouchableOpacity onPress={() => setIsSearching(!isSearching)}>
-                    <MaterialIcons name='search' size={32} color="black"/>
+                    <MaterialIcons name='search' size={32} color="black" />
                 </TouchableOpacity>
             </View>
 
             {/* search bar */}
-            {/* {isSearching && (
-                <View>
+            {isSearching && (
+                <View style={style.field}>
                     <TextInput
                         placeholder='Search'
                         value={searchTerm}
                         onChangeText={setSearchTerm}
                     />
                 </View>
-            )} */}
+            )}
 
             <Button
                 title='Add Person'
-                onPress={() => navigation.navigate("AddEditScreen", {action: "create"})}
+                onPress={() => navigation.navigate("AddEditScreen", { action: "create" })}
             />
+
+            {error && (
+                <Text style={style.error}>Error: {error}</Text>
+            )}
 
             <FlatList
                 style={style.list}
-                data={people}
+                data={filteredPeople}
                 keyExtractor={(item) => item.id.toString()}
+                onRefresh={refreshList}
+                refreshing={isLoading}
 
-                renderItem={({item}) => (
+                renderItem={({ item }) => (
                     <PersonCard
                         person={item}
                         navigation={navigation}

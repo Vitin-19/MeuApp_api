@@ -12,10 +12,12 @@ const PersonCard = ({person, navigation, refresh}) => {
             </View>
 
             <View>
-                <Button
-                    title="Edit"
-                    onPress={() => navigation.navigate("AddEditScreen", {person: person, action: "edit"})}
-                />
+                <View style={{marginBottom:10}}>
+                    <Button
+                        title="Edit"
+                        onPress={() => navigation.navigate("AddEditScreen", {person: person, action: "edit"})}
+                    />
+                </View>
                 
                 <Button
                     title="Delete"

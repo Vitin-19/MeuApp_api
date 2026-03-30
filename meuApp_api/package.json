@@ -7,12 +7,12 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "start_db": "json-server --watch ../backend/db.json --port 3000",
+    "db": "json-server --watch ../backend/db.json --port 3000",
     "host": "ssh -p 443 -R0:localhost:3000 qr@a.pinggy.io"
   },
   "dependencies": {
     "@expo/vector-icons": "^15.1.1",
-    "@react-native-async-storage/async-storage": "^3.0.1",
+    "@react-native-async-storage/async-storage": "2.2.0",
     "@react-navigation/native": "^7.1.33",
     "@react-navigation/stack": "^7.8.5",
     "axios": "^1.13.6",

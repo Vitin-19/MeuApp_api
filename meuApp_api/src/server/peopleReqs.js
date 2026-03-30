@@ -8,7 +8,12 @@ const verifyPerson = (person) => {
 export async function createPerson(person) {
 
     try {
-        const newPerson = new Person(null, person.firstName, person.lastName, person.email, person.phone);
+        const newPerson = {
+            firstName: person.firstName,
+            lastName: person.lastName,
+            email: person.email,
+            phone: person.phone,
+        };
 
         const response = await server.post("", newPerson);
         console.log("Person has been created successfully");
@@ -56,19 +61,18 @@ export async function deletePerson(id) {
 
 export async function getPeople() {
     try {
-        const people = await server.get();
-        console.log("People has been gotten successfully\n", people);
+        const response = await server.get();
+        console.log("People has been gotten successfully\n", response.data);
 
         return {
             message: "People has been gotten successfully",
-            data: people
+            data: response.data
         };
     } catch (error) {
-        console.error(error);
+        //console.error(error);
         return {
             message: "Error",
-            data: null
+            data: error.message
         }
-        throw new Error(error);
     }
 }

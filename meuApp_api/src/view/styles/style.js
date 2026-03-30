@@ -7,6 +7,14 @@ export default StyleSheet.create({
         backgroundColor:"#f5f5f5",
     },
 
+    header:{
+        display:"flex",
+        flexDirection:"row",
+        width:"100%",
+        justifyContent:"space-between",
+        paddingTop:20,
+    },
+
     title:{
         fontSize:22,
         textAlign:"center",
@@ -43,5 +51,11 @@ export default StyleSheet.create({
     field:{
         borderWidth: 1,
         borderColor:"#0567e7",
-    }
+        marginBottom:10
+    },
+    
+    error: {
+        color:"#b90000",
+        marginBottom:10
+    },
 });
