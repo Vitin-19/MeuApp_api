@@ -25,7 +25,10 @@ export async function createPerson(person) {
     } catch (error) {
         console.error(error)
 
-        throw new Error(error);
+        return {
+            message: "Error",
+            data: error.message
+        }
     }
 }
 
@@ -42,7 +45,10 @@ export async function editPerson(person) {
     }catch(error){
         console.error(error);
 
-        throw new Error(error);
+        return {
+            message: "Error",
+            data: error.message
+        }
     }
 }
 
@@ -51,11 +57,16 @@ export async function deletePerson(id) {
         await server.delete(`/${id}`);
         console.log("Person has been delected successfully")
 
-        return "Person has been delected successfully";
+        return {
+            message:"Person has been delected successfully"
+        };
     } catch (error) {
         console.error(error);
 
-        throw new Error(error);
+        return {
+            message: "Error",
+            data: error.message
+        }
     }
 }
 

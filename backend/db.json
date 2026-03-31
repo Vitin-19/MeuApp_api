@@ -57,11 +57,11 @@
       "phone": "91909876543"
     },
     {
-      "id": "af89",
-      "firstName": "Vitor",
-      "lastName": "Paiva",
-      "email": "vitor@gmail.com",
-      "phone": "19999011906"
+      "id": "5e6c",
+      "firstName": "Rafa",
+      "lastName": "Cruz",
+      "email": "rafa@gmail.com",
+      "phone": "99999999999"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

@@ -2,7 +2,7 @@ import { View, Text, Button } from 'react-native';
 import { deletePerson } from '../../server/peopleReqs';
 import style from '../styles/style';
 
-const PersonCard = ({person, navigation, refresh, setIsLoading}) => {
+const PersonCard = ({person, navigation, refresh, setIsLoading, setError}) => {
     return(
         <View style={style.card}>
 
@@ -23,7 +23,8 @@ const PersonCard = ({person, navigation, refresh, setIsLoading}) => {
                     title="Delete"
                     onPress={async () => {
                         setIsLoading(true);
-                        await deletePerson(person.id);
+                        const response  = await deletePerson(person.id);
+                        if(response.message === "Error") setError("Erro ao deletar pessoa");
                         setIsLoading(false);
                         refresh();
                     }}

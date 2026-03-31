@@ -3,6 +3,7 @@ import { View, TextInput, Button, Text } from "react-native"
 import { editPerson, createPerson } from '../../server/peopleReqs';
 import style from '../styles/style';
 import Person from '../../model/Person';
+import { delay } from '../../utils/delay';
 
 const AddEditScreen = ({navigation, route}) => {
     const person = route?.params?.person;
@@ -35,14 +36,21 @@ const AddEditScreen = ({navigation, route}) => {
             return;
         }   
 
-
+        let response;
 
         if(action === "edit"){
             newPerson.id = person.id;
-            await editPerson(newPerson);
+            response = await editPerson(newPerson);
         }else{
-            await createPerson(newPerson);
+            response = await createPerson(newPerson);
         }
+
+        if(response.message === "Error"){
+            setError("Erro ao salvar pessoa");
+            await delay(3000);
+        }
+
+
         navigation.replace("Home");
     }
 
