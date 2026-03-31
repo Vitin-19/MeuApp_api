@@ -2,7 +2,7 @@ import { View, Text, Button } from 'react-native';
 import { deletePerson } from '../../server/peopleReqs';
 import style from '../styles/style';
 
-const PersonCard = ({person, navigation, refresh}) => {
+const PersonCard = ({person, navigation, refresh, setIsLoading}) => {
     return(
         <View style={style.card}>
 
@@ -22,7 +22,9 @@ const PersonCard = ({person, navigation, refresh}) => {
                 <Button
                     title="Delete"
                     onPress={async () => {
+                        setIsLoading(true);
                         await deletePerson(person.id);
+                        setIsLoading(false);
                         refresh();
                     }}
                 />

@@ -110,6 +110,7 @@ const HomeScreen = ({ navigation }) => {
                         person={item}
                         navigation={navigation}
                         refresh={loadPeople}
+                        setIsLoading={setIsLoading}
                     />
                 )}
             />
