@@ -35,7 +35,7 @@ npm i
 
 # Execução:
 
-Em um terminal separado, no diretório do app, execute o banco de dados
+Em um terminal separado, no diretório do app, execute o banco de dados:
 ```bash
 npm run db
 ```
